@@ -18,7 +18,7 @@ else
 
     protected override async Task OnInitAsync()
     {
-        var markdown = await Http.GetStringAsync("sample.md");
+        var markdown = await Http.GetStringAsync("Sample.md");
         var rawHtml = ParseMarkdown(markdown);
         Markdown = rawHtml;
     }
