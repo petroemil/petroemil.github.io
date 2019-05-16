@@ -17,7 +17,7 @@ else
 
     protected override async Task OnInitAsync()
     {
-        var markdown = await Http.GetStringAsync("Sample.md");
+        var markdown = await Http.GetStringAsync("content/Sample.md");
 
         var rawHtml = CommonMark.CommonMarkConverter.Convert(markdown);
         Markdown = rawHtml;
