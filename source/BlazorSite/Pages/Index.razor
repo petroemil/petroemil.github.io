@@ -1,7 +1,6 @@
 ﻿@page "/"
-@using Microsoft.AspNetCore.Components
-@inject System.Net.Http.HttpClient Http
-@inject Microsoft.JSInterop.IJSRuntime JsRuntime
+@inject HttpClient Http
+@inject IJSRuntime jsInterop
 
 @if (Markdown is null)
 {
@@ -19,17 +18,8 @@ else
     protected override async Task OnInitAsync()
     {
         var markdown = await Http.GetStringAsync("Sample.md");
-        var rawHtml = ParseMarkdown(markdown);
+
+        var rawHtml = CommonMark.CommonMarkConverter.Convert(markdown);
         Markdown = rawHtml;
-    }
-
-    protected override async Task OnAfterRenderAsync()
-    {
-        await JsRuntime.InvokeAsync<object>("highlightAllSyntax");
-    }
-
-    private string ParseMarkdown(string markdown)
-    {
-        return CommonMark.CommonMarkConverter.Convert(markdown);
     }
 }
