@@ -1,5 +1,8 @@
 ﻿{
+  "PostId": "test-post",
   "Title": "Hello World",
   "Summary": "Test post - this is a short summary of the post",
-  "PublishDate": "2019-05-17 16:19:34 -08:00"
+  "PublishDate": "2019-05-17 16:19:34 -08:00",
+  "HeroImageUrl": "heroimage.jpg",
+  "MarkdownContentUrl": "post.md"
 }
