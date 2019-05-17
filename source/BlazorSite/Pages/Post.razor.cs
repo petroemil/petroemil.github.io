@@ -1,38 +1,25 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using BlazorSite.BlogService;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorSite.Pages
 {
-    public class PostMetadata
-    {
-        public DateTimeOffset PublishDate { get; set; }
-        public string Title { get; set; }
-        public string Summary { get; set; }
-    }
-
     public class PostBase : ComponentBase
     {
         [Inject]
-        private HttpClient HttpClient { get; set; }
+        private IBlogService BlogService { get; set; }
 
         [Parameter]
-        protected string PostId { get; set; }
+        private string PostId { get; set; }
 
-        protected string HeroImage => $"content/{PostId}/heroimage.jpg";
-        protected string Content => $"content/{PostId}/post.md";
-
-        protected PostMetadata Metadata { get; set; }
+        protected BlogPostMetadata Metadata { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
             if (PostId is null)
                 return;
 
-            Metadata = await HttpClient.GetJsonAsync<PostMetadata>($"content/{PostId}/metadata.json");
-
-            Console.WriteLine(Metadata is null);
+            Metadata = await BlogService.GetBlogPost(PostId);
 
             this.StateHasChanged();
         }

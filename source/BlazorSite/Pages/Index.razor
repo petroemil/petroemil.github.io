@@ -1,9 +1,19 @@
 ﻿@page "/"
+@inherits BlazorSite.Pages.IndexBase
 
-<div class="content-card">
+<center><h1>Emil's Dev Blog</h1></center>
 
-    <h1>Emil's Dev Blog</h1>
-
-    <p><a href="test-post">Open this sample post</a></p>
-
-</div>
+@if (BlogPosts is null)
+{
+    <p>Loading posts...</p>
+}
+else
+{
+    foreach (var post in BlogPosts)
+    {
+        <BlazorSite.Shared.PostLayout Metadata="@post">
+            <p>@post.Summary</p>
+            <p><a href="@post.PostId">Read more</a></p>
+        </BlazorSite.Shared.PostLayout>
+    }
+}
