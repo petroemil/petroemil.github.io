@@ -1,22 +1,50 @@
 ﻿body {
     background-color: #EEEEEE;
-}
-
-h1 {
-    color: #660000;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000000;
 }
 
 p {
-    color: #000000;
+    text-align: justify;
+}
+
+h1 { 
+    color: #660000; 
+}
+h2 {
+    color: #660000;
+}
+h3 {
+    color: #660000;
+}
+h4 {
+    color: #660000;
+}
+h5 {
+    color: #660000;
+}
+h6 {
+    color: #660000;
 }
 
 .content-card {
     max-width: 720px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
     background-color: #FFFFFF;
-    box-shadow: 10px 10px 10px #DDDDDD;
+    box-shadow: 5px 5px 25px #AAAAAA;
     padding: 25px;
+}
+
+.content-heroimage {
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -25px;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
 }
 
 pre {
