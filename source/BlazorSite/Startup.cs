@@ -7,13 +7,14 @@ namespace BlazorSite
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ICodeHeighlighter, HighlightJs>();
         }
 
         public void Configure(IComponentsApplicationBuilder app)
         {
             app.AddComponent<App>("app");
 
-            CustomHtmlFormatter.Configure(app.Services);
+            CustomCodeFormatter.Configure(app.Services);
         }
     }
 }

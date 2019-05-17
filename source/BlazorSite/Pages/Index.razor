@@ -1,25 +1,3 @@
 ﻿@page "/"
-@inject HttpClient Http
-@inject IJSRuntime jsInterop
 
-@if (Markdown is null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    @((MarkupString)Markdown)
-}
-
-@functions {
-    [Parameter]
-    string Markdown { get; set; }
-
-    protected override async Task OnInitAsync()
-    {
-        var markdown = await Http.GetStringAsync("content/Sample.md");
-
-        var rawHtml = CommonMark.CommonMarkConverter.Convert(markdown);
-        Markdown = rawHtml;
-    }
-}
+<BlazorSite.Shared.MarkdownPresenter Url="content/Sample.md" />

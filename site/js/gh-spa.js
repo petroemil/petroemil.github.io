@@ -5,6 +5,8 @@
 
 var spa = {
 
+    // Call it from Index.html
+    // ----------------------------------------------------------------------
     // This script takes the current url and converts the path and query
     // string into just a query string, and then redirects the browser
     // to the new url with only a query string and hash fragment,
@@ -33,6 +35,8 @@ var spa = {
         );
     },
 
+    // Call it from 404.html
+    // ----------------------------------------------------------------------
     // This script checks to see if a redirect is present in the query string
     // and converts it back into the correct url and adds it to the
     // browser's history using window.history.replaceState(...),

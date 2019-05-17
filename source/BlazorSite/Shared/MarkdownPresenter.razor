@@ -1,0 +1,11 @@
+﻿@inherits BlazorSite.Shared.MarkdownPresenterBase
+@using Microsoft.AspNetCore.Components
+
+@if (FormattedMarkdown is null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @((MarkupString)FormattedMarkdown)
+}
