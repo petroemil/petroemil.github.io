@@ -4,27 +4,16 @@
     color: #000000;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: #880000;
+}
+
 p {
     text-align: justify;
 }
 
-h1 { 
-    color: #660000; 
-}
-h2 {
-    color: #660000;
-}
-h3 {
-    color: #660000;
-}
-h4 {
-    color: #660000;
-}
-h5 {
-    color: #660000;
-}
-h6 {
-    color: #660000;
+a {
+    color: #AA0000;
 }
 
 .content-card {
@@ -45,6 +34,15 @@ h6 {
     height: 300px;
     background-position: center;
     background-size: cover;
+}
+
+.content-title {
+    margin-left: -25px;
+    margin-right: -25px;
+    margin-top: -25px;
+    padding: 3px 25px;
+    background: #333333;
+    color: #AAAAAA;
 }
 
 pre {

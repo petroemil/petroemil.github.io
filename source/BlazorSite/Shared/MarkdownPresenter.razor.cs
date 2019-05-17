@@ -22,8 +22,7 @@ namespace BlazorSite.Shared
                 return;
 
             var markdown = await HttpClient.GetStringAsync(Url);
-            var html = CommonMarkConverter.Convert(markdown);
-            FormattedMarkdown = html;
+            FormattedMarkdown = CommonMarkConverter.Convert(markdown);
 
             this.StateHasChanged();
         }

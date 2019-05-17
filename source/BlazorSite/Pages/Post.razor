@@ -1,0 +1,16 @@
+﻿@page "/{PostId}"
+@inherits BlazorSite.Pages.PostBase
+
+<div class="content-card">
+    <div class="content-heroimage" style="background-image:url('@HeroImage')" />
+    
+    <div class="content-title">
+        <p>
+            <b>@Metadata?.Title</b>
+            <br />
+            @Metadata?.PublishDate.ToLocalTime().ToString("D")
+        </p>
+    </div>
+    
+    <BlazorSite.Shared.MarkdownPresenter Url="@Content" />
+</div>
