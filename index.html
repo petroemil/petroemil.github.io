@@ -1,20 +1,33 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Emil's Dev Blog</title>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/vs.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
-    <script src="site/js/gh-spa.js"></script>
-    <script>spa.handleRedirectFrom404();</script>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <link rel="stylesheet" href="site/css/loader.css" />
-    <script src="site/js/highlight-interop.js"></script>
-</head>
-<body>
-
-    <app><div id="loader" /></app>
-
-</body>
+    <head>
+    
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Emil's Dev Blog</title>
+    
+        <!-- Blazor -->
+        <script src="_framework/blazor.webassembly.js"></script>
+    
+        <!-- HighlightJs -->
+        <link rel="stylesheet" href="site/css/highlightjs.vs2015.css">
+        <script src="site/js/highlight.pack.js"></script>
+        <script src="site/js/highlight.interop.js"></script>
+    
+        <!-- GitHub Pages SPA helper -->
+        <script src="site/js/gh-spa.js">
+            spa.handleRedirectFrom404();
+        </script>
+    
+        <!-- Page loading animation -->
+        <link rel="stylesheet" href="site/css/loader.css" />
+    
+    </head>
+    <body>
+    
+        <app>
+            <div id="loader"></div>
+        </app>
+    
+    </body>
 </html>
