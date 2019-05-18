@@ -1,11 +1,17 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorSite.BlogService
 {
+    public class GitHubContent
+    {
+        public string Name { get; set; }
+    }
+
     public class BlogPostMetadata
     {
         public string PostId { get; set; }
@@ -38,36 +44,19 @@ namespace BlazorSite.BlogService
 
         public async Task<IEnumerable<BlogPostMetadata>> GetBlogPosts()
         {
-            return new[]
-            {
-                new BlogPostMetadata
-                {
-                    PostId = "test-post",
-                    Title = "Hello World #1",
-                    Summary = "This is a fake summary for this post, not something coming from the JSON metadata",
-                    PublishDate = DateTimeOffset.Now,
-                    HeroImageUrl = "heroimage.jpg",
-                    MarkdownContentUrl = "post.md"
-                },
-                new BlogPostMetadata
-                {
-                    PostId = "test-post",
-                    Title = "Hello World #2",
-                    Summary = "Still not the real thing",
-                    PublishDate = DateTimeOffset.Now - TimeSpan.FromHours(1),
-                    HeroImageUrl = "heroimage.jpg",
-                    MarkdownContentUrl = "post.md"
-                },
-                new BlogPostMetadata
-                {
-                    PostId = "test-post",
-                    Title = "Hello World #3",
-                    Summary = "Still not...",
-                    PublishDate = DateTimeOffset.Now - TimeSpan.FromHours(2),
-                    HeroImageUrl = "heroimage.jpg",
-                    MarkdownContentUrl = "post.md"
-                }
-            };
+            const string owner = "petroemil";
+            const string repo = "petroemil.github.io";
+            const string contentDir = "content";
+            var gitHubApi = $"https://api.github.com/repos/{owner}/{repo}/contents/{contentDir}";
+            var blogPostDirs = await httpClient.GetJsonAsync<GitHubContent[]>(gitHubApi);
+
+#if DEBUG
+            blogPostDirs = new[] { new GitHubContent { Name = "test-post" } };
+#endif
+
+            var blogPosts = await Task.WhenAll(blogPostDirs.Select(x => GetBlogPost(x.Name)));
+
+            return blogPosts;
         }
     }
 }
