@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace BlazorSite
+namespace BlazorSite.Markdown
 {
     public interface ICodeHeighlighter
     {

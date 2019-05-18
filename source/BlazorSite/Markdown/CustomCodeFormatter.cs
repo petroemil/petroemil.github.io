@@ -1,11 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using CommonMark;
 using CommonMark.Formatters;
 using CommonMark.Syntax;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorSite
+namespace BlazorSite.Markdown
 {
     public class CustomCodeFormatter : HtmlFormatter
     {
@@ -37,14 +35,6 @@ namespace BlazorSite
             {
                 base.WriteBlock(block, isOpening, isClosing, out ignoreChildNodes);
             }
-        }
-
-        public static void Configure(IServiceProvider services)
-        {
-            var codeHighlighter = services.GetService<ICodeHeighlighter>();
-
-            CommonMarkSettings.Default.OutputDelegate = (doc, output, settings) =>
-                new CustomCodeFormatter(codeHighlighter, output, settings).WriteDocument(doc);
         }
     }
 }

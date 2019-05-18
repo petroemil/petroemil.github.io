@@ -1,4 +1,4 @@
-﻿using CommonMark;
+﻿using BlazorSite.Markdown;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Net.Http;
@@ -11,6 +11,9 @@ namespace BlazorSite.Shared
         [Inject]
         private HttpClient HttpClient { get; set; }
 
+        [Inject]
+        private IMarkdownConverter MarkdownConverter { get; set; }
+
         [Parameter]
         protected string Url { get; set; }
 
@@ -22,7 +25,7 @@ namespace BlazorSite.Shared
                 return;
 
             var markdown = await HttpClient.GetStringAsync(Url);
-            FormattedMarkdown = CommonMarkConverter.Convert(markdown);
+            FormattedMarkdown = MarkdownConverter.ConvertMarkdownToHTML(markdown);
 
             this.StateHasChanged();
         }
