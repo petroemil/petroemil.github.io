@@ -1,4 +1,5 @@
-﻿using BlazorSite.Markdown;
+﻿using BlazorSite.BlogService;
+using BlazorSite.Markdown;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Net.Http;
@@ -15,17 +16,22 @@ namespace BlazorSite.Shared
         private IMarkdownConverter MarkdownConverter { get; set; }
 
         [Parameter]
-        protected string Url { get; set; }
+        private string PostId { get; set; }
+
+        [Parameter]
+        private string FileName { get; set; }
 
         protected string FormattedMarkdown { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
-            if (Url is null)
+            if (PostId is null || FileName is null)
                 return;
 
-            var markdown = await HttpClient.GetStringAsync(Url);
-            FormattedMarkdown = MarkdownConverter.ConvertMarkdownToHTML(markdown);
+            var markdownFilePath = BlogPostUriHelper.GetContentFileUri(PostId, FileName);
+            var markdown = await HttpClient.GetStringAsync(markdownFilePath);
+
+            FormattedMarkdown = MarkdownConverter.ConvertMarkdownToHTML(PostId, markdown);
 
             this.StateHasChanged();
         }

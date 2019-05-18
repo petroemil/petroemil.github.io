@@ -4,23 +4,32 @@ namespace BlazorSite.Markdown
 {
     public interface IMarkdownConverter
     {
-        string ConvertMarkdownToHTML(string markdown);
+        string ConvertMarkdownToHTML(string postId, string markdown);
     }
 
     public class MarkdownConverter : IMarkdownConverter
     {
-        private readonly CommonMarkSettings commonMarkSettings;
+        private readonly ICodeHeighlighter codeHighlighter;
 
         public MarkdownConverter(ICodeHeighlighter codeHighlighter)
         {
-            this.commonMarkSettings = CommonMarkSettings.Default.Clone();
-            this.commonMarkSettings.OutputDelegate = (doc, output, settings) =>
-                new CustomCodeFormatter(codeHighlighter, output, settings).WriteDocument(doc);
+            this.codeHighlighter = codeHighlighter;
         }
 
-        public string ConvertMarkdownToHTML(string markdown)
+        private CommonMarkSettings CreateSettings(string postId)
         {
-            return CommonMarkConverter.Convert(markdown, this.commonMarkSettings);
+            var formatterSettings = CommonMarkSettings.Default.Clone();
+
+            formatterSettings.OutputDelegate = (doc, output, settings) =>
+                new CustomMarkdownFormatter(postId, codeHighlighter, output, settings).WriteDocument(doc);
+
+            return formatterSettings;
+        }
+
+        public string ConvertMarkdownToHTML(string postId, string markdown)
+        {
+            var formatterSettingsw = CreateSettings(postId);
+            return CommonMarkConverter.Convert(markdown, formatterSettingsw);
         }
     }
 }

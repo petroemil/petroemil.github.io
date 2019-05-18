@@ -45,6 +45,12 @@ a {
     color: #AAAAAA;
 }
 
+.content-image {
+    margin-left: -25px;
+    margin-right: -25px;
+    width: calc(100% + 50px);
+}
+
 pre {
     margin-left: -25px;
     margin-right: -25px;

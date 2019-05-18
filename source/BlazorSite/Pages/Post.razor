@@ -2,5 +2,5 @@
 @inherits BlazorSite.Pages.PostBase
 
 <BlazorSite.Shared.PostLayout Metadata="@Metadata">
-    <BlazorSite.Shared.MarkdownPresenter Url="@($"content/{Metadata.PostId}/{Metadata.MarkdownContentUrl}")" />
+    <BlazorSite.Shared.MarkdownPresenter PostId="@Metadata.PostId" FileName="@Metadata.MarkdownFile" />
 </BlazorSite.Shared.PostLayout>

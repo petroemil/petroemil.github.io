@@ -18,8 +18,25 @@ namespace BlazorSite.BlogService
         public DateTimeOffset PublishDate { get; set; }
         public string Title { get; set; }
         public string Summary { get; set; }
-        public string HeroImageUrl { get; set; }
-        public string MarkdownContentUrl { get; set; }
+        public string HeroImageFile { get; set; }
+        public string MarkdownFile { get; set; }
+    }
+
+    public static class BlogPostUriHelper
+    {
+        const string owner = "petroemil";
+        const string repo = "petroemil.github.io";
+        const string contentRoot = "content";
+        const string metadataFile = "metadata.json";
+
+        public static string GetGitHubContentUrl()
+            => $"https://api.github.com/repos/{owner}/{repo}/contents/{contentRoot}";
+
+        public static string GetContentFileUri(string postId, string contentFile)
+            => $"{contentRoot}/{postId}/{contentFile}";
+
+        public static string GetMetadataFileUri(string postId)
+            => GetContentFileUri(postId, metadataFile);
     }
 
     public interface IBlogService
@@ -39,16 +56,14 @@ namespace BlazorSite.BlogService
 
         public Task<BlogPostMetadata> GetBlogPost(string postId)
         {
-            return httpClient.GetJsonAsync<BlogPostMetadata>($"content/{postId}/metadata.json");
+            var metadataFilePath = BlogPostUriHelper.GetMetadataFileUri(postId);
+            return httpClient.GetJsonAsync<BlogPostMetadata>(metadataFilePath);
         }
 
         public async Task<IEnumerable<BlogPostMetadata>> GetBlogPosts()
         {
-            const string owner = "petroemil";
-            const string repo = "petroemil.github.io";
-            const string contentDir = "content";
-            var gitHubApi = $"https://api.github.com/repos/{owner}/{repo}/contents/{contentDir}";
-            var blogPostDirs = await httpClient.GetJsonAsync<GitHubContent[]>(gitHubApi);
+            var hitHubContentUrl = BlogPostUriHelper.GetGitHubContentUrl();
+            var blogPostDirs = await httpClient.GetJsonAsync<GitHubContent[]>(hitHubContentUrl);
 
 #if DEBUG
             blogPostDirs = new[] { new GitHubContent { Name = "test-post" } };
