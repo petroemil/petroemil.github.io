@@ -1,3 +1,5 @@
+$ErrorActionPreference = 'Stop'
+
 # Create the release
 dotnet publish .\source -c Release
 
