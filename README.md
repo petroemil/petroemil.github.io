@@ -17,3 +17,7 @@ The custom syntax highlighter is the [HighlightJS](https://highlightjs.org/) lib
 ## Single Page Apps for GitHub Pages
 
 To enable routing within the SPA, I'm using the [SPA for GitHub "hack"](https://github.com/rafrex/spa-github-pages) from Rafael Pedicini.
+
+## GitHub Corner
+
+The little animated GitHub link it the top-right corner is cominf from the [GitHub Corner project](https://github.com/tholman/github-corners) by Tim Holman.
