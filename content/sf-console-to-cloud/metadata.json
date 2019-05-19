@@ -1,5 +1,4 @@
 {
-  "PostId": "sf-console-to-cloud",
   "IsDraft": true,
   "Title": "Introduction to Service Fabric – Part 1: From Console to Cloud",
   "Summary": "I’ve been studying Service Fabric for a while now in small steps and one thing I noticed about most of the introduction material is that they are usually following a “top-down” approach when introducing the features of Service Fabric instead of gradually building them up from the bottom. So this blog series is going to be a slightly unusual attempt to introduce Service Fabric to developers with already existing experience of building – and more importantly – hosting web services. It’s going to start from the basics and gradually introduce many of Service Fabric’s capabilities in about 4 or 5 blog posts.",
