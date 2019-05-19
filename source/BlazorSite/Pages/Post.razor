@@ -1,7 +1,7 @@
 ﻿@page "/{PostId}"
 @inherits BlazorSite.Pages.PostBase
 
-<a href="/" style="text-decoration: none"><center><h1>Emil's Dev Blog</h1></center></a>
+<a href="/"><center><h1>Emil's Dev Blog</h1></center></a>
 
 <BlazorSite.Shared.PostLayout Metadata="@Metadata">
     <BlazorSite.Shared.MarkdownPresenter PostId="@Metadata.PostId" FileName="@Metadata.MarkdownFile" />

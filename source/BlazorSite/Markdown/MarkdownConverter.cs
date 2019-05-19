@@ -44,13 +44,15 @@ namespace BlazorSite.Markdown
 
                     return sb.ToString();
                 })
-                .WithFormatter(InlineTag.Image, inline =>
-                {
-                    var imgUrl = BlogPostUriHelper.GetContentFileUri(postId, inline.TargetUrl);
-                    var imgAlt = inline.LiteralContent;
+                .WithFormatter(InlineTag.Image,
+                    inline => !(inline.TargetUrl.StartsWith("http://") || inline.TargetUrl.StartsWith("https://")),
+                    inline =>
+                    {
+                        var imgUrl = BlogPostUriHelper.GetContentFileUri(postId, inline.TargetUrl);
+                        var imgAlt = inline.LiteralContent;
 
-                    return $"<img class=\"content-image\" src=\"{imgUrl}\" alt=\"imgAlt\" title=\"{imgAlt}\">";
-                })
+                        return $"<img src=\"{imgUrl}\" alt=\"imgAlt\" title=\"{imgAlt}\">";
+                    })
                 .WriteDocument(doc);
 
             return formatterSettings;

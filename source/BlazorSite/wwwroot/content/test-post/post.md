@@ -1,4 +1,4 @@
-﻿This content was written in Markdown then converted to HTML on the fly.
+This content was written in Markdown then converted to HTML on the fly.
 
 ## Some C# code
 
@@ -31,9 +31,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius ornare biben
 
 ## Image to test URL rewrite and styling
 
-![alt text](images/hololens.png "Minecraft demo with HoloLens")
+These images are both coming from the official [Microsoft HoloLens 2 website](https://www.microsoft.com/en-gb/hololens/)...
 
-That's all folks. I think pretty much this is all I need for a meaningful blog engine.
-* Text
-* Code
-* Images
+### "Local" Image
+
+One of them is saved "locally" as site content and uploaded with the post...
+
+![alt text](images/hololens.jpg "HoloeLens 2 - Surgery")
+
+### "Remote" Image
+
+And the other one is just a direct reference to the image on a remote server
+
+![alt text](https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE2PIYx?ver=efdb&q=90&m=6&h=585&w=1040&b=%23FFFFFFFF&l=f&o=t "HoloeLens 2 - Interaction")
