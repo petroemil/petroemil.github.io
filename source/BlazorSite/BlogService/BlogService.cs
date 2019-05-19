@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
-using System;
+﻿using BlazorSite.BlogService.Dto;
+using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -8,43 +8,10 @@ using System.Threading.Tasks;
 
 namespace BlazorSite.BlogService
 {
-    public class GitHubContent
-    {
-        public string Name { get; set; }
-    }
-
-    public class BlogPostMetadata
-    {
-        public string PostId { get; set; }
-        public bool IsDraft => PostId.StartsWith("draft-");
-        public DateTimeOffset PublishDate { get; set; }
-        public string Title { get; set; }
-        public string Summary { get; set; }
-        public string HeroImageFile { get; set; }
-        public string MarkdownFile { get; set; }
-    }
-
-    public static class BlogPostUriHelper
-    {
-        const string owner = "petroemil";
-        const string repo = "petroemil.github.io";
-        const string contentRoot = "content";
-        const string metadataFile = "metadata.json";
-
-        public static string GetGitHubContentUrl()
-            => $"https://api.github.com/repos/{owner}/{repo}/contents/{contentRoot}";
-
-        public static string GetContentFileUri(string postId, string contentFile)
-            => $"{contentRoot}/{postId}/{contentFile}";
-
-        public static string GetMetadataFileUri(string postId)
-            => GetContentFileUri(postId, metadataFile);
-    }
-
     public interface IBlogService
     {
-        Task<IEnumerable<BlogPostMetadata>> GetBlogPosts(bool includeDrafts = false);
-        Task<BlogPostMetadata> GetBlogPostDetails(string postId);
+        Task<IEnumerable<BlogPostDetails>> GetBlogPosts(bool includeDrafts = false);
+        Task<BlogPostDetails> GetBlogPostDetails(string postId);
     }
 
     public class BlogService : IBlogService
@@ -56,10 +23,11 @@ namespace BlazorSite.BlogService
             this.httpClient = httpClient;
         }
 
-        public Task<BlogPostMetadata> GetBlogPostDetails(string postId)
+        public async Task<BlogPostDetails> GetBlogPostDetails(string postId)
         {
             var metadataFilePath = BlogPostUriHelper.GetMetadataFileUri(postId);
-            return httpClient.GetJsonAsync<BlogPostMetadata>(metadataFilePath);
+            var metadata = await httpClient.GetJsonAsync<BlogPostMetadata>(metadataFilePath);
+            return new BlogPostDetails(postId, metadata);
         }
 
         private async Task<IEnumerable<string>> GetPostIds()
@@ -78,7 +46,7 @@ namespace BlazorSite.BlogService
 #endif
         }
 
-        public async Task<IEnumerable<BlogPostMetadata>> GetBlogPosts(bool includeDrafts = false)
+        public async Task<IEnumerable<BlogPostDetails>> GetBlogPosts(bool includeDrafts = false)
         {
             var posts = await Observable
                 .FromAsync(() => GetPostIds())

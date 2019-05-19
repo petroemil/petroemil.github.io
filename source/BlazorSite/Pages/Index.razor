@@ -12,7 +12,7 @@ else
     foreach (var post in BlogPosts)
     {
         <a href="@post.PostId" style="color: #000000">
-            <BlazorSite.Shared.PostLayout Metadata="@post">
+            <BlazorSite.Shared.PostLayout PostDetails="@post">
                 <p>@post.Summary</p>
             </BlazorSite.Shared.PostLayout>
         </a>

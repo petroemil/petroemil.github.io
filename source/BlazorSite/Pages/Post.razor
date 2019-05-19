@@ -3,6 +3,6 @@
 
 <a href="/"><center><h1>Emil's Dev Blog</h1></center></a>
 
-<BlazorSite.Shared.PostLayout Metadata="@Metadata">
-    <BlazorSite.Shared.MarkdownPresenter PostId="@Metadata.PostId" FileName="@Metadata.MarkdownFile" />
+<BlazorSite.Shared.PostLayout PostDetails="@PostDetails">
+    <BlazorSite.Shared.MarkdownPresenter PostId="@PostDetails.PostId" FileName="@PostDetails.MarkdownFile" />
 </BlazorSite.Shared.PostLayout>

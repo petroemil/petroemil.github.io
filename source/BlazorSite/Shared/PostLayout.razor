@@ -3,19 +3,19 @@
 
     <div class="content-card">
 
-        @if (Metadata is null)
+        @if (PostDetails is null)
         {
             <p>Loading post content...</p>
         }
         else
         {
-            <div class="content-heroimage" style="background-image:url('@(BlogPostUriHelper.GetContentFileUri(Metadata.PostId, Metadata.HeroImageFile))')" />
+            <div class="content-heroimage" style="background-image:url('@(BlogPostUriHelper.GetContentFileUri(PostDetails.PostId, PostDetails.HeroImageFile))')" />
 
             <div class="content-title">
                 <p>
-                    <b>@Metadata.Title</b>
+                    <b>@PostDetails.Title</b>
                     <br />
-                    @Metadata.PublishDate.ToLocalTime().ToString("f")
+                    @PostDetails.PublishDate.ToLocalTime().ToString("f")
                 </p>
             </div>
 

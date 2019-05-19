@@ -10,6 +10,6 @@ namespace BlazorSite.Shared
         protected RenderFragment ChildContent { get; set; }
 
         [Parameter]
-        protected BlogPostMetadata Metadata { get; set; }
+        protected BlogPostDetails PostDetails { get; set; }
     }
 }

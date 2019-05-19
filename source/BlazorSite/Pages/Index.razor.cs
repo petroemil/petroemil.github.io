@@ -10,7 +10,7 @@ namespace BlazorSite.Pages
         [Inject]
         private IBlogService BlogService { get; set; }
 
-        protected IEnumerable<BlogPostMetadata> BlogPosts { get; set; }
+        protected IEnumerable<BlogPostDetails> BlogPosts { get; set; }
 
         protected override async Task OnInitAsync()
         {

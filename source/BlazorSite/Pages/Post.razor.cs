@@ -12,14 +12,14 @@ namespace BlazorSite.Pages
         [Parameter]
         private string PostId { get; set; }
 
-        protected BlogPostMetadata Metadata { get; set; }
+        protected BlogPostDetails PostDetails { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
             if (PostId is null)
                 return;
 
-            Metadata = await BlogService.GetBlogPostDetails(PostId);
+            PostDetails = await BlogService.GetBlogPostDetails(PostId);
 
             this.StateHasChanged();
         }
