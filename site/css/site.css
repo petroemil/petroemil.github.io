@@ -1,11 +1,14 @@
 ﻿body {
     background-color: #EEEEEE;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000000;
+    font-family: "Segoe UI","SegoeUI","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: large;
+    font-weight: lighter;
+    color: #555555;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #BBBBBB;
+    color: #000000;
+    font-weight: normal;
 }
 
 p {
@@ -13,7 +16,7 @@ p {
 }
 
 a {
-    color: #BBBBBB;
+    color: #000000;
     text-decoration: none;
 }
 
