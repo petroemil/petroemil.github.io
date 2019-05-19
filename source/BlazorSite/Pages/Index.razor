@@ -11,9 +11,10 @@ else
 {
     foreach (var post in BlogPosts)
     {
-        <BlazorSite.Shared.PostLayout Metadata="@post">
-            <p>@post.Summary</p>
-            <p><a href="@post.PostId">Read more</a></p>
-        </BlazorSite.Shared.PostLayout>
+        <a href="@post.PostId" style="text-decoration: none">
+            <BlazorSite.Shared.PostLayout Metadata="@post">
+                <p>@post.Summary</p>
+            </BlazorSite.Shared.PostLayout>
+        </a>
     }
 }
