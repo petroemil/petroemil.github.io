@@ -5,7 +5,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #880000;
+    color: #BBBBBB;
 }
 
 p {
@@ -13,7 +13,8 @@ p {
 }
 
 a {
-    color: #AA0000;
+    color: #BBBBBB;
+    text-decoration: none;
 }
 
 .content-card {
@@ -25,6 +26,17 @@ a {
     background-color: #FFFFFF;
     box-shadow: 5px 5px 25px #AAAAAA;
     padding: 25px;
+}
+
+.content-card img {
+    margin-left: -25px;
+    margin-right: -25px;
+    width: calc(100% + 50px);
+}
+
+.content-card pre {
+    margin-left: -25px;
+    margin-right: -25px;
 }
 
 .content-heroimage {
@@ -43,15 +55,4 @@ a {
     padding: 3px 25px;
     background: #333333;
     color: #AAAAAA;
-}
-
-.content-image {
-    margin-left: -25px;
-    margin-right: -25px;
-    width: calc(100% + 50px);
-}
-
-pre {
-    margin-left: -25px;
-    margin-right: -25px;
 }
