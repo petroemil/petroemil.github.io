@@ -70,8 +70,7 @@ namespace BlazorSite.BlogService
 #endif
 
             var blogPosts = await Task.WhenAll(blogPostDirs.Select(x => GetBlogPost(x.Name)));
-
-            return blogPosts;
+            return blogPosts.OrderByDescending(x => x.PublishDate);
         }
     }
 }
