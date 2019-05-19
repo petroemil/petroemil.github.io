@@ -19,7 +19,7 @@ namespace BlazorSite.Pages
             if (PostId is null)
                 return;
 
-            Metadata = await BlogService.GetBlogPost(PostId);
+            Metadata = await BlogService.GetBlogPostDetails(PostId);
 
             this.StateHasChanged();
         }

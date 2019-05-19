@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorSite.BlogService
@@ -15,6 +16,7 @@ namespace BlazorSite.BlogService
     public class BlogPostMetadata
     {
         public string PostId { get; set; }
+        public bool IsDraft => PostId.StartsWith("draft-");
         public DateTimeOffset PublishDate { get; set; }
         public string Title { get; set; }
         public string Summary { get; set; }
@@ -41,8 +43,8 @@ namespace BlazorSite.BlogService
 
     public interface IBlogService
     {
-        Task<IEnumerable<BlogPostMetadata>> GetBlogPosts();
-        Task<BlogPostMetadata> GetBlogPost(string postId);
+        Task<IEnumerable<BlogPostMetadata>> GetBlogPosts(bool includeDrafts = false);
+        Task<BlogPostMetadata> GetBlogPostDetails(string postId);
     }
 
     public class BlogService : IBlogService
@@ -54,23 +56,39 @@ namespace BlazorSite.BlogService
             this.httpClient = httpClient;
         }
 
-        public Task<BlogPostMetadata> GetBlogPost(string postId)
+        public Task<BlogPostMetadata> GetBlogPostDetails(string postId)
         {
             var metadataFilePath = BlogPostUriHelper.GetMetadataFileUri(postId);
             return httpClient.GetJsonAsync<BlogPostMetadata>(metadataFilePath);
         }
 
-        public async Task<IEnumerable<BlogPostMetadata>> GetBlogPosts()
+        private async Task<IEnumerable<string>> GetPostIds()
         {
-            var hitHubContentUrl = BlogPostUriHelper.GetGitHubContentUrl();
-            var blogPostDirs = await httpClient.GetJsonAsync<GitHubContent[]>(hitHubContentUrl);
-
 #if DEBUG
-            blogPostDirs = new[] { new GitHubContent { Name = "test-post" } };
-#endif
+            return new[] { "test-post" };
+#else
+            var hitHubContentUrl = BlogPostUriHelper.GetGitHubContentUrl();
+            var postIds = await Observable
+                .FromAsync(() => httpClient.GetJsonAsync<GitHubContent[]>(hitHubContentUrl))
+                .SelectMany(x => x)
+                .Select(x => x.Name)
+                .ToList();
 
-            var blogPosts = await Task.WhenAll(blogPostDirs.Select(x => GetBlogPost(x.Name)));
-            return blogPosts.OrderByDescending(x => x.PublishDate);
+            return postIds;
+#endif
+        }
+
+        public async Task<IEnumerable<BlogPostMetadata>> GetBlogPosts(bool includeDrafts = false)
+        {
+            var posts = await Observable
+                .FromAsync(() => GetPostIds())
+                .SelectMany(x => x)
+                .Select(x => Observable.FromAsync(() => GetBlogPostDetails(x)))
+                .Merge(10)
+                .Where(x => !x.IsDraft || includeDrafts)
+                .ToList();
+
+            return posts.OrderByDescending(x => x.PublishDate);
         }
     }
 }
