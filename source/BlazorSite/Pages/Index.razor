@@ -13,7 +13,7 @@ else
     {
         if (!(post.MarkdownFile is null))
         {
-            <a href="@post.PostId" style="color: #000000">
+            <a class="content-card-link" href="@post.PostId">
                 <BlazorSite.Shared.PostLayout PostDetails="@post">
                     <BlazorSite.Shared.MarkdownPresenter PostId="@post.PostId" FileName="@post.SummaryMarkdownFile" />
                 </BlazorSite.Shared.PostLayout>
