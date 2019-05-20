@@ -1,0 +1,8 @@
+{
+  "IsDraft": true,
+  "Title": "Introduction to Service Fabric – Part 2: What Service Fabric can do for you?",
+  "Summary": "Service Fabric offers a wide range of tools to manage services and many of these can be used without touching an existing service, purely through manifest files. I believe walking through these is a good exercise because these are typically the kind of features people try to achieve for their own services, hosted on-premises or even in the cloud.",
+  "PublishDate": "2018-11-19 19:23:37 +00:00",
+  "HeroImageFile": "sf-heroimage.png",
+  "MarkdownFile": "post.md"
+}
