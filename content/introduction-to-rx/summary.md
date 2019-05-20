@@ -1,6 +1,9 @@
-After getting familiar with the various techniques in Service Fabric to build scalable and realiable services, the next step is to talk about Stateful Services.
+When I finished my university in 2013, I wrote my thesis about Rx and also released it as a free ebook available for anyone interested in learning about it. That book was written in Hungarian, it was based on Rx 2.x version and it was targeting Windows 8 WinRT app developers. Since then some things have changed in the library (moving to NuGet, changed namespaces, etc), WPF on .NET Core 3 (Preview) got released and I had the chance to rethink some parts of the book and most importantly translate it to English.
 
-In a traditional webservice the service layer is stateless and the data is stored externally in some sort of database, like an SQL Server or CosmosDB. This inherently adds an extra bit of latency to the queries as they have to pass through the services and eventually get passed further down the pipe to the database. This means our service layer can be stateless and will be easily scalable but only as long as the database won't start being a bottleneck.
+This book is not a hard core deep dive book, it's an introduction for beginners who want some easy to understand "Hello World" level examples to understand the core concepts of Rx and see the various LINQ operators working alone and combined.
 
-Of course, as I mentioned in the previous articles, with the right partitioning strategy we can split the data access through partitions and build partitioned cache within the services to quickly process requests.
-But in case, you're building a data-heavy system and the data access is still a bottleneck to the overall performance, you have an extra option to consider: Stateful Services.
+I host this book on GitHub with the source code of the examples and any tools I've been using to put this book together, and I absolutely welcome any suggestions or requests to expand this book with, or potentially even do a series of blog posts or another more in-depth book to talk about more advanced scenarios.
+
+I hope you are going to enjoy it.
+
+[**START READING →**](https://github.com/petroemil/Rx.Book/blob/master/Draft.md)
