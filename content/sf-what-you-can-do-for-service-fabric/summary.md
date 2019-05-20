@@ -1,0 +1,1 @@
+In this article I will introduce some of the more advanced use-cases of Service Fabric. Following the previous article, the main focus is still going to be resource/load balancing and scaling, but this time using some of the more advanced techniques that "don't come for free".

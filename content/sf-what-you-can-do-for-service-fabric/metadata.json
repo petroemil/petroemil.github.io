@@ -1,8 +1,8 @@
 {
   "IsDraft": true,
   "Title": "Introduction to Service Fabric – Part 3: What you can do for Service Fabric?",
-  "Summary": "In this article I will introduce some of the more advanced use-cases of Service Fabric. Following the previous article, the main focus is still going to be resource/load balancing and scaling, but this time using some of the more advanced techniques that \"don’t come for free\".",
   "PublishDate": "2018-11-25 22:15:42 +00:00",
   "HeroImageFile": "sf-heroimage.png",
+  "SummaryMarkdownFile": "summary.md",
   "MarkdownFile": "post.md"
 }

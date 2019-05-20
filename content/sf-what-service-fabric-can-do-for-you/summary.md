@@ -1,0 +1,1 @@
+Service Fabric offers a wide range of tools to manage services and many of these can be used without touching an existing service, purely through manifest files. I believe walking through these is a good exercise because these are typically the kind of features people try to achieve for their own services, hosted on-premises or even in the cloud.
