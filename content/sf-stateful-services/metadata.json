@@ -1,7 +1,8 @@
 {
+  "IsDraft": true,
   "Title": "Introduction to Service Fabric – Part 4: Stateful Services",
-  "Summary": "Test post - C#",
+  "Summary": "Lets talk about the crown jevel of Service Fabric: Stateful Services",
   "PublishDate": "2019-04-01 23:30:34 +00:00",
-  "HeroImageFile": "heroimage.jpg",
+  "HeroImageFile": "sf-heroimage.png",
   "MarkdownFile": "post.md"
 }
