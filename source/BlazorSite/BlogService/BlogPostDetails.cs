@@ -9,9 +9,9 @@ namespace BlazorSite.BlogService
         public bool IsDraft { get; }
         public DateTimeOffset PublishDate { get; }
         public string Title { get; }
-        public string Summary { get; }
         public string HeroImageFile { get; }
-        public string MarkdownFile { get; }
+        public string SummaryMarkdownFile {get; }
+        public string? MarkdownFile { get; }
 
         public BlogPostDetails(string postId, BlogPostMetadata metadata)
         {
@@ -20,8 +20,8 @@ namespace BlazorSite.BlogService
             IsDraft = metadata.IsDraft;
             PublishDate = metadata.PublishDate;
             Title = metadata.Title;
-            Summary = metadata.Summary;
             HeroImageFile = metadata.HeroImageFile;
+            SummaryMarkdownFile = metadata.SummaryMarkdownFile;
             MarkdownFile = metadata.MarkdownFile;
         }
     }

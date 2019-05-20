@@ -1,7 +1,7 @@
 ﻿{
   "Title": "Hello World",
-  "Summary": "Test post - this is a short summary of the post",
   "PublishDate": "2019-05-17 16:19:34 -08:00",
   "HeroImageFile": "heroimage.jpg",
+  "SummaryMarkdownFile":  "summary.md",
   "MarkdownFile": "post.md"
 }
