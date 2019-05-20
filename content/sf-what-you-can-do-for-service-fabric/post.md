@@ -82,6 +82,6 @@ Compared to numeric partitioning, with named partitions you have to know exactly
 
 ---
 
-# [Stateful Services](https://petroemil.wordpress.com/2019/04/01/sf-stateful-services/)
+# [Stateful Services](sf-stateful-services)
 
 In the next article I will focus on a single major feature of Service Fabric, something I've been building the foundation for with these 2.5 articles. Stateful Services are the next step in the journey of integrating with Service Fabric and by leveraging its benefits, achieving even better performance and lower latency.
