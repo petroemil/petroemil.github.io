@@ -65,3 +65,8 @@ a {
     background: #333333;
     color: #AAAAAA;
 }
+
+.content-card-link {
+    font-weight: lighter;
+    color: #555555;
+}
