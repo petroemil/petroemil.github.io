@@ -52,6 +52,6 @@ While Windows Services will guarantee you a single instance of your service runn
 
 ---
 
-# [What can Service Fabric do for you?](/draft-sf-what-service-fabric-can-do-for-you)
+# [What can Service Fabric do for you?](sf-what-service-fabric-can-do-for-you)
 
 The next article, will introduce some of the “low hanging fruits”, features that can be used without actually integrating with Service Fabric, features that you basically get for free when you are running on top of Service Fabric.
