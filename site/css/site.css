@@ -1,4 +1,9 @@
 ﻿body {
+    background-image: url(../images/background.png);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:  contain;
     background-color: #EEEEEE;
     font-family: "Segoe UI","SegoeUI","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: large;
