@@ -6,7 +6,7 @@ To start from the absolute basics, lets talk a little bit about the lifecycle of
 
 # A Console App
 
-![Alt](images/console-app.jpg)
+![Alt](images/console-app.png)
 
 In its rawest form a backend service can be thought of as a simple console app. You start it and it starts listening to some kind of input channel in an infinite loop until it’s asked to stop or it fails.
 
@@ -14,7 +14,7 @@ Running a console app is nice and simple, you can even set it up to start automa
 
 # A Windows Service
 
-![Alt](images/windows-service.jpg)
+![Alt](images/windows-service.png)
 
 This is where Windows Services can come in handy. They do exactly that. You can convert your app into a Windows Service and you will get nice lifecycle management like auto-start, auto-restart on failure and graceful shutdown.
 
@@ -27,7 +27,7 @@ In traditional, on-premises environments, if you have a small datacenter with 10
 
 ## In the Cloud
 
-![Alt](images/cloud.jpg)
+![Alt](images/cloud.png)
 
 In the cloud things work differently. You don’t necessarily have access to a very specific set of machines, so you can no longer say you want a service to be deployed to SVR1 and SVR7. You just package up your application, or prepare a VM image and tell the cloud to spin up two machines (to follow the example) with them. If you want to scale your service, you start up new machines. If you want to host other services, they will have their own machines. If you feel like the one service per machine model is a bit too wasteful and you want to bundle services to be hosted on the same machine, you can do it, but they will scale together.
 
@@ -40,11 +40,11 @@ These systems will give you an abstraction over your cluster and help you with y
 
 # A Service Fabric Service
 
-![Alt](images/service-fabric.jpg)
+![Alt](images/service-fabric.png)
 
 To finish this post, I’d like to paint a picture of how Service Fabric services are different from Windows Services.
 
-![Alt](images/service-fabric-2.jpg)
+![Alt](images/service-fabric-2.png)
 
 With Service Fabric you get an extra layer of management for your services. Service Fabric will run as a Windows Service an all machines and your services will be managed by Service Fabric (instead of Windows). Service Fabric will keep track of your cluster nodes and your service instances (across the whole cluster) in real-time and make sure you have all your services running on the cluster with the right number of instances.
 
