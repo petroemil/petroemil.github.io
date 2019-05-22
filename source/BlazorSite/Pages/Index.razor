@@ -1,5 +1,5 @@
 ﻿@page "/"
-@inherits BlazorSite.Pages.IndexBase
+@inherits IndexBase
 
 <center><h1>Emil's Dev Blog</h1></center>
 
@@ -11,8 +11,6 @@ else
 {
     foreach (var post in BlogPosts)
     {
-        <BlazorSite.Shared.PostLayout PostDetails="@post" IsActive="true">
-            <BlazorSite.Shared.MarkdownPresenter PostId="@post.PostId" FileName="@post.SummaryMarkdownFile" />
-        </BlazorSite.Shared.PostLayout>
+        <PostCard PostDetails="@post" IsDetailedView="false" />
     }
 }

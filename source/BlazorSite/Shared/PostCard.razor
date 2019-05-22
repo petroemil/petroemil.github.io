@@ -1,5 +1,4 @@
-﻿@inherits BlazorSite.Shared.PostLayoutBase
-@using Microsoft.AspNetCore.Components
+﻿@inherits PostCardBase
 @using BlazorSite.BlogService
 
 <div class="content-card">
@@ -10,7 +9,7 @@
     }
     else
     {
-        <ConditionalLink Uri="@(IsActive ? PostDetails.PostId : null)">
+        <ConditionalLink Uri="@(!IsDetailedView ? PostDetails.PostId : null)">
             <div class="content-heroimage" style="background-image:url('@(BlogPostUriHelper.GetContentFileUri(PostDetails.PostId, PostDetails.HeroImageFile))')" />
 
             <div class="content-title">
@@ -22,6 +21,8 @@
             </div>
         </ConditionalLink>
 
-        @ChildContent
+        <MarkdownPresenter 
+            PostId="@PostDetails.PostId" 
+            FileName="@(IsDetailedView ? (PostDetails.MarkdownFile ?? PostDetails.SummaryMarkdownFile) : PostDetails.SummaryMarkdownFile)" />
     }
 </div>
