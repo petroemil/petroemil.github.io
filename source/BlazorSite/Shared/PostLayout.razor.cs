@@ -11,5 +11,8 @@ namespace BlazorSite.Shared
 
         [Parameter]
         protected BlogPostDetails PostDetails { get; set; }
+
+        [Parameter]
+        protected bool IsActive { get; set; }
     }
 }

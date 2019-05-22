@@ -1,0 +1,10 @@
+﻿@inherits ConditionalLinkBase
+
+@if (!string.IsNullOrWhiteSpace(Uri))
+{
+    <a href="@Uri">@ChildContent</a>
+}
+else
+{
+    @ChildContent
+}

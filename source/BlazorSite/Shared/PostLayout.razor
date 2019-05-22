@@ -1,14 +1,16 @@
 ﻿@inherits BlazorSite.Shared.PostLayoutBase
+@using Microsoft.AspNetCore.Components
 @using BlazorSite.BlogService
 
-    <div class="content-card">
+<div class="content-card">
 
-        @if (PostDetails is null)
-        {
-            <p><center>Loading post data...</center></p>
-        }
-        else
-        {
+    @if (PostDetails is null)
+    {
+        <p><center>Loading post data...</center></p>
+    }
+    else
+    {
+        <ConditionalLink Uri="@(IsActive ? PostDetails.PostId : null)">
             <div class="content-heroimage" style="background-image:url('@(BlogPostUriHelper.GetContentFileUri(PostDetails.PostId, PostDetails.HeroImageFile))')" />
 
             <div class="content-title">
@@ -18,7 +20,8 @@
                     @PostDetails.PublishDate.ToLocalTime().ToString("f")
                 </p>
             </div>
+        </ConditionalLink>
 
-            @ChildContent
-        }
-    </div>
+        @ChildContent
+    }
+</div>

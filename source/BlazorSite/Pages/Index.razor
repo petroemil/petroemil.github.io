@@ -11,19 +11,8 @@ else
 {
     foreach (var post in BlogPosts)
     {
-        if (!(post.MarkdownFile is null))
-        {
-            <a class="content-card-link" href="@post.PostId">
-                <BlazorSite.Shared.PostLayout PostDetails="@post">
-                    <BlazorSite.Shared.MarkdownPresenter PostId="@post.PostId" FileName="@post.SummaryMarkdownFile" />
-                </BlazorSite.Shared.PostLayout>
-            </a>
-        }
-        else
-        {
-            <BlazorSite.Shared.PostLayout PostDetails="@post">
-                <BlazorSite.Shared.MarkdownPresenter PostId="@post.PostId" FileName="@post.SummaryMarkdownFile" />
-            </BlazorSite.Shared.PostLayout>
-        }
+        <BlazorSite.Shared.PostLayout PostDetails="@post" IsActive="true">
+            <BlazorSite.Shared.MarkdownPresenter PostId="@post.PostId" FileName="@post.SummaryMarkdownFile" />
+        </BlazorSite.Shared.PostLayout>
     }
 }
