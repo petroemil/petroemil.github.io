@@ -1,5 +1,6 @@
 ﻿using BlazorSite.BlogService;
 using Microsoft.AspNetCore.Components;
+using System;
 
 namespace BlazorSite.Shared
 {
@@ -10,5 +11,29 @@ namespace BlazorSite.Shared
 
         [Parameter]
         protected bool IsDetailedView { get; set; }
+
+        protected string GetTwitterShareUrl()
+        {
+            var title = Uri.EscapeDataString(PostDetails.Title);
+            var url = Uri.EscapeDataString(BlogPostUriHelper.GetSocialShareUrl(PostDetails.PostId, "socialshare.html"));
+
+            return $"https://twitter.com/intent/tweet?text={title}&url={url}";
+        }
+
+        protected string GetFacebookShareUrl()
+        {
+            var title = Uri.EscapeDataString(PostDetails.Title);
+            var url = Uri.EscapeDataString(BlogPostUriHelper.GetSocialShareUrl(PostDetails.PostId, "socialshare.html"));
+
+            return $"https://www.facebook.com/sharer/sharer.php?text={title}&u={url}";
+        }
+
+        protected string GetLinkedInShareUrl()
+        {
+            //var title = Uri.EscapeDataString(PostDetails.Title);
+            var url = Uri.EscapeDataString(BlogPostUriHelper.GetSocialShareUrl(PostDetails.PostId, "socialshare.html"));
+
+            return $"http://www.linkedin.com/shareArticle?mini=true&url={url}";            
+        }
     }
 }

@@ -2,6 +2,7 @@
 {
     public static class BlogPostUriHelper
     {
+        const string siteUrl = "https://petroemil.github.io";
         const string owner = "petroemil";
         const string repo = "petroemil.github.io";
         const string contentRoot = "content";
@@ -15,5 +16,8 @@
 
         public static string GetMetadataFileUri(string postId)
             => GetContentFileUri(postId, metadataFile);
+
+        public static string GetSocialShareUrl(string postId, string socialSharePage)
+            => $"{siteUrl}/{GetContentFileUri(postId, socialSharePage)}";
     }
 }
