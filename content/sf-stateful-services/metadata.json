@@ -3,5 +3,6 @@
   "PublishDate": "2019-04-01 23:30:34 +00:00",
   "HeroImageFile": "sf-heroimage.png",
   "SummaryMarkdownFile": "summary.md",
-  "MarkdownFile": "post.md"
+  "MarkdownFile": "post.md",
+  "SocialSharingFile": "socialshare.html"
 }
