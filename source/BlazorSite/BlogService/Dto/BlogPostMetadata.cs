@@ -10,5 +10,6 @@ namespace BlazorSite.BlogService.Dto
         public string HeroImageFile { get; private set; }
         public string SummaryMarkdownFile { get; private set; }
         public string? MarkdownFile { get; private set; }
+        public string SocialSharingFile { get; private set; }
     }
 }

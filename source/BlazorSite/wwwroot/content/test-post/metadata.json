@@ -2,6 +2,7 @@
   "Title": "Hello World",
   "PublishDate": "2019-05-17 16:19:34 -08:00",
   "HeroImageFile": "heroimage.jpg",
-  "SummaryMarkdownFile":  "summary.md",
-  "MarkdownFile": "post.md"
+  "SummaryMarkdownFile": "summary.md",
+  "MarkdownFile": "post.md",
+  "SocialSharingFile": "socialshare.html"
 }
