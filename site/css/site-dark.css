@@ -1,0 +1,37 @@
+﻿body {
+    background-image: url(../images/bg-dark.png);
+    background-color: #202020;
+    color: #C6C6C6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFFFFF;
+}
+
+.content-card {
+    background-color: #292929;
+    box-shadow: 5px 5px 10px #151515;
+}
+
+.content-title {
+    background: #1E1E1E;
+    color: #C6C6C6;
+}
+
+.share-icon {
+    fill: #8A8A8A;
+}
+
+#loader:after {
+    border: 10px solid #C6C6C6;
+    border-color: #C6C6C6 transparent #C6C6C6 transparent;
+}
+
+.github-corner svg {
+    fill: #C6C6C6;
+    color: #202020;
+}
