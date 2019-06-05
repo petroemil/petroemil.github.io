@@ -19,9 +19,19 @@ a {
 
 .content-title {
     background: #1E1E1E;
-    color: #8A8A8A;
+    color: #C6C6C6;
 }
 
 .share-icon {
     fill: #8A8A8A;
+}
+
+#loader:after {
+    border: 10px solid #C6C6C6;
+    border-color: #C6C6C6 transparent #C6C6C6 transparent;
+}
+
+.github-corner svg {
+    fill: #C6C6C6;
+    color: #202020;
 }
