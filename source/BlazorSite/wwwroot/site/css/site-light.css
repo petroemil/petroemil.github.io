@@ -1,0 +1,27 @@
+﻿body {
+    background-image: url(../images/bg-light.png);
+    background-color: #EEEEEE;
+    color: #555555;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #000000;
+}
+
+a {
+    color: #000000;
+}
+
+.content-card {
+    background-color: #FFFFFF;
+    box-shadow: 5px 5px 25px #AAAAAA;
+}
+
+.content-title {
+    background: #333333;
+    color: #AAAAAA;
+}
+
+.share-icon {
+    fill: #AAAAAA;
+}
