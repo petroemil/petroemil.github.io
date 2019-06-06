@@ -1,25 +1,25 @@
 ﻿body {
     background-image: url(../images/bg-dark.png);
-    background-color: #202020;
-    color: #C6C6C6;
+    background-color: #1E1E1E;
+    color: #CCCCCC;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #FFFFFF;
+    color: #E8E8E8;
 }
 
 a {
-    color: #FFFFFF;
+    color: #E8E8E8;
 }
 
 .content-card {
-    background-color: #303030;
-    box-shadow: 5px 5px 10px #151515;
+    background-color: #252525;
+    box-shadow: 5px 5px 25px #101010;
 }
 
 .content-title {
-    background: #1E1E1E;
-    color: #C6C6C6;
+    background: #383838;
+    color: #E8E8E8;
 }
 
 .share-icon {
@@ -27,11 +27,11 @@ a {
 }
 
 #loader:after {
-    border: 10px solid #C6C6C6;
-    border-color: #C6C6C6 transparent #C6C6C6 transparent;
+    border: 10px solid #ADADAD;
+    border-color: #ADADAD transparent #ADADAD transparent;
 }
 
 .github-corner svg {
-    fill: #C6C6C6;
-    color: #202020;
+    fill: #383838;
+    color: #ADADAD;
 }
