@@ -1,0 +1,1 @@
+After touching on the points of partitioning and stateful services, the peak - in my opinion - in distributed system design is represented by the Actor Model. And luckily for you, Service Fabric has an excellent, easy to use implementation of this model, called the Virtual Actor Model that provides extreme scalability.
