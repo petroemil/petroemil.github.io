@@ -42,7 +42,7 @@ But there's a better way of doing things, and that is the Actor programming mode
 The high level interface definition for this Customer Actor would look something like this:
 
 ```csharp
-public interface ICustomerActor : IActor<string>
+public interface ICustomerActor : IActor
 {
     Task Create(string email);
     Task<Customer> Get();
