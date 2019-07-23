@@ -17,6 +17,11 @@ public static class TextBlockExtensions
 }
 ```
 
+```csharp
+public static async Task Method(string name)
+    => $"Hello, \"{name}\"";
+```
+
 ## Some XML code
 
 ```xml
