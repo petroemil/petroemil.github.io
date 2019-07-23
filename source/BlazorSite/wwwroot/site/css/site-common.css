@@ -39,7 +39,7 @@ a {
     margin-right: -25px;
 }
 
-.markdown code {
+.markdown pre code {
     padding-left: 25px;
     padding-right: 25px;
     text-align: left;
