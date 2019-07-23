@@ -6,14 +6,12 @@
     font-family: "Segoe UI","SegoeUI","Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: large;
     font-weight: lighter;
+    text-align: justify;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
-}
-
-p {
-    text-align: justify;
+    text-align: left;
 }
 
 a {
@@ -39,6 +37,12 @@ a {
 .markdown pre {
     margin-left: -25px;
     margin-right: -25px;
+}
+
+.markdown code {
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: left;
 }
 
 .content-heroimage {
