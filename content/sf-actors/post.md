@@ -81,10 +81,3 @@ The location of individual Actor instances are determined by their IDs. An Actor
 
 As the Service Fabric Reliable Actors are backed by *Reliable Services*, we get the exact same guarantees on the service level. If a partition goes down, Service Fabric will restart it on another cluster node.
 And thanks to the concept of Virtual Actors, they are already expected to come and go, so in case an Actor dies, the next request will re-activate it.
-
----
-
-# Orleans
-
-As a follow-up to this "Introduction to Service Fabric" series, I'll transition to talk about Orleans.
-Microsoft Orleans is the original implementation of the Virtual Actor concept. It's written in .NET, developed in the open and is much more feature-rich than Service Fabric Actors.

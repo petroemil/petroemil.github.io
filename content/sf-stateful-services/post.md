@@ -26,11 +26,3 @@ You can store strongly typed data that will be serialized with traditional seria
 With Reliable Collections that can be accessed from multiple nodes at the same time, we get transactions to guarantee the consistency of the persisted collections. You can have as many collections as you want, in any combination and can still guarantee transactionality for the overall operation potentially touching multiple collections.
 
 Again, they work as you’d expect from a transaction, you open a transaction, associate it with all the actions you take on the various collections and then commit or roll back the changes.
-
----
-
-# Actors
-
-For the last article of this introductory series, I left the Reliable Actors.
-
-We started this journey from the most simple “monolithic” Console Apps and built it all the way up to Reliable and Stateful Services. While from an infrastructure perspective we already maxed out Service Fabric’s offerings, there’s one more step we can take to get the most out of our distributed system: adopt the Actor programming model.

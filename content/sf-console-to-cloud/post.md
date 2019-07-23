@@ -49,9 +49,3 @@ To finish this post, I’d like to paint a picture of how Service Fabric service
 With Service Fabric you get an extra layer of management for your services. Service Fabric will run as a Windows Service an all machines and your services will be managed by Service Fabric (instead of Windows). Service Fabric will keep track of your cluster nodes and your service instances (across the whole cluster) in real-time and make sure you have all your services running on the cluster with the right number of instances.
 
 While Windows Services will guarantee you a single instance of your service running on a given machine, Service Fabric will guarantee the requested number of instances of your services running across a (potentially dynamically changing) cluster of machines. As long as you don’t run out of physical hardware, Service Fabric will keep your services alive without any intervention.
-
----
-
-# [What can Service Fabric do for you?](sf-what-service-fabric-can-do-for-you)
-
-The next article, will introduce some of the “low hanging fruits”, features that can be used without actually integrating with Service Fabric, features that you basically get for free when you are running on top of Service Fabric.

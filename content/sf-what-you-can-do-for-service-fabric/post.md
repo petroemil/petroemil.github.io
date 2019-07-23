@@ -79,9 +79,3 @@ Instead of numerical ranges, you might be able to divide your request by the nam
 The good thing about named partitions is that they can come and go, they can be added and removed on demand. As new games are starting, new partitions are created, and once they finish, they will be removed.
 
 Compared to numeric partitioning, with named partitions you have to know exactly what kind of requests you want to serve and explicitly create (and later remove) the partitions for those cases. It needs a bit more work from an orchestration point of view, but gives more flexibility in terms of scaling.
-
----
-
-# [Stateful Services](sf-stateful-services)
-
-In the next article I will focus on a single major feature of Service Fabric, something I've been building the foundation for with these 2.5 articles. Stateful Services are the next step in the journey of integrating with Service Fabric and by leveraging its benefits, achieving even better performance and lower latency.

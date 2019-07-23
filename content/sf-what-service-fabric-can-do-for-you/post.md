@@ -99,9 +99,3 @@ Your service can be pretty much anything:
  - Or native Service Fabric services that tightly integrate into the platform and get the most out of it – *you will hear much more about this option in the next articles*
 
 You don’t only have the flexibility in what Service Fabric can run, but also where Service Fabric can run:  it’s is available for Windows and Linux and as a managed service offering on Azure.
-
----
-
-# [What you can do for Service Fabric?](sf-what-you-can-do-for-service-fabric)
-
-In the remaining two or three articles I will introduce the more advanced features of Service Fabric. These are features that won’t come free, features that will require you to actively integrate your services with the Service Fabric APIs. These are the flagship features most presentations start with when introducing Service Fabric, so stay tuned because the fun is just about to begin.
