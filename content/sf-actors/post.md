@@ -81,3 +81,15 @@ The location of individual Actor instances are determined by their IDs. An Actor
 
 As the Service Fabric Reliable Actors are backed by *Reliable Services*, we get the exact same guarantees on the service level. If a partition goes down, Service Fabric will restart it on another cluster node.
 And thanks to the concept of Virtual Actors, they are already expected to come and go, so in case an Actor dies, the next request will re-activate it.
+
+## Scaling
+
+While I introduced Actors as the pinnacle of scalability, there are a few things worth noting regarding Service Fabric's implementation.
+
+In Service Fabric, Actors are hosted in *numeric range partitioned* services. If you read one of the previous articles about the different types of partitioning methods Service Fabric supports, you'll know that this one has certain limitations.
+
+The number of partitions in a numeric range partitioned setup is fixed and must be pre-defined when deploying the service. You can have more partitions than nodes in the cluster, so you at least have a little bit of elasticity, if you add more nodes to the cluster, Service Fabric will make sure the partitions are nicely distributed across the available nodes. 
+
+But, if you have 50 partitions and only 5 nodes in the cluster, you will have quite a bit of overhead of hosting 10 partitions per node. You also have to consider that even though that 10 partitions worth of Actors are going to be hosted on the same node, they will still need to communicate with each other through inter-process channels that includes serialization.
+
+In an upcoming article I will write about Microsoft Orleans which is the original and much more powerful implementation of Virtual Actors.
