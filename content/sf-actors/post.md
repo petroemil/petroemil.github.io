@@ -92,8 +92,6 @@ The number of partitions in a numeric range partitioned setup is fixed and must 
 
 But, if you have 50 partitions and only 5 nodes in the cluster, you will have quite a bit of overhead of hosting 10 partitions per node. You also have to consider that even though that 10 partitions worth of Actors are going to be hosted on the same node, they will still need to communicate with each other through inter-process channels that includes serialization.
 
-In an upcoming article I will write about Microsoft Orleans which is the original and much more powerful implementation of Virtual Actors.
-
 ## State
 
 Hosting Actors in partitions might make scaling sub-optimal, but it has its benefits when it comes to state management. Because Service Fabirc Actors are hosted by *Stateful Reliable Services*, and we know that actor placement is tied to partitions, it's easy to see that storing the state of an actor is also going to be tied to a partition. What it means is that reading and writing the state of an Actor will always happen on a local disk and not over the network. It means very low latencies for state updates and very fast initialisation of new Actor instances (with existing state).
