@@ -8,13 +8,13 @@ namespace BlazorSite.Pages
     public class IndexBase : ComponentBase
     {
         [Inject]
-        private IBlogService BlogService { get; set; }
+        private IBlogService? BlogService { get; set; }
 
-        protected IEnumerable<BlogPostDetails> BlogPosts { get; set; }
+        protected IEnumerable<BlogPostDetails>? BlogPosts { get; set; }
 
         protected override async Task OnInitAsync()
         {
-            BlogPosts = await BlogService.GetBlogPosts();
+            BlogPosts = await BlogService!.GetBlogPosts();
         }
     }
 }

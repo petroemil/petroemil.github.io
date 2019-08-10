@@ -10,18 +10,18 @@ namespace BlazorSite.Shared
     public class MarkdownPresenterBase : ComponentBase, IDisposable
     {
         [Inject]
-        private HttpClient HttpClient { get; set; }
+        private HttpClient? HttpClient { get; set; }
 
         [Inject]
-        private IMarkdownConverter MarkdownConverter { get; set; }
+        private IMarkdownConverter? MarkdownConverter { get; set; }
 
         [Parameter]
-        private string PostId { get; set; }
+        private string? PostId { get; set; }
 
         [Parameter]
-        private string FileName { get; set; }
+        private string? FileName { get; set; }
 
-        protected string FormattedMarkdown { get; set; }
+        protected string? FormattedMarkdown { get; set; }
 
         protected override async Task OnParametersSetAsync()
         {
@@ -29,9 +29,9 @@ namespace BlazorSite.Shared
                 return;
 
             var markdownFilePath = BlogPostUriHelper.GetContentFileUri(PostId, FileName);
-            var markdown = await HttpClient.GetStringAsync(markdownFilePath);
+            var markdown = await HttpClient!.GetStringAsync(markdownFilePath);
 
-            FormattedMarkdown = MarkdownConverter.ConvertMarkdownToHTML(PostId, markdown);
+            FormattedMarkdown = MarkdownConverter!.ConvertMarkdownToHTML(PostId, markdown);
 
             this.StateHasChanged();
         }

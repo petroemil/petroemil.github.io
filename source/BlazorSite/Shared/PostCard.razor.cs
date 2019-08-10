@@ -7,14 +7,14 @@ namespace BlazorSite.Shared
     public class PostCardBase : ComponentBase
     {
         [Parameter]
-        protected BlogPostDetails PostDetails { get; set; }
+        protected BlogPostDetails? PostDetails { get; set; }
 
         [Parameter]
-        protected bool IsDetailedView { get; set; }
+        protected bool? IsDetailedView { get; set; }
 
         protected string GetTwitterShareUrl()
         {
-            var title = Uri.EscapeDataString(PostDetails.Title);
+            var title = Uri.EscapeDataString(PostDetails!.Title);
             var url = Uri.EscapeDataString(GetSocialShareUrl());
 
             return $"https://twitter.com/intent/tweet?text={title}&url={url}";
@@ -22,7 +22,7 @@ namespace BlazorSite.Shared
 
         protected string GetFacebookShareUrl()
         {
-            var title = Uri.EscapeDataString(PostDetails.Title);
+            var title = Uri.EscapeDataString(PostDetails!.Title);
             var url = Uri.EscapeDataString(GetSocialShareUrl());
 
             return $"https://www.facebook.com/sharer/sharer.php?text={title}&u={url}";
@@ -36,6 +36,6 @@ namespace BlazorSite.Shared
         //}
 
         protected string GetSocialShareUrl()
-            => BlogPostUriHelper.GetSocialShareUrl(PostDetails.PostId, PostDetails.SocialSharingFile);
+            => BlogPostUriHelper.GetSocialShareUrl(PostDetails!.PostId, PostDetails.SocialSharingFile);
     }
 }

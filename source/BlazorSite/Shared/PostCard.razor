@@ -9,7 +9,7 @@
     }
     else
     {
-        <ConditionalLink Uri="@(!IsDetailedView ? PostDetails.PostId : null)">
+        <ConditionalLink Uri="@(!IsDetailedView!.Value ? PostDetails.PostId : null)">
             <div class="content-heroimage" style="background-image:url('@(BlogPostUriHelper.GetContentFileUri(PostDetails.PostId, PostDetails.HeroImageFile))')" />
 
             <div class="content-title">
@@ -22,9 +22,9 @@
         </ConditionalLink>
 
         <MarkdownPresenter PostId="@PostDetails.PostId"
-                           FileName="@(IsDetailedView ? (PostDetails.MarkdownFile ?? PostDetails.SummaryMarkdownFile) : PostDetails.SummaryMarkdownFile)" />
+                           FileName="@(IsDetailedView!.Value ? (PostDetails.MarkdownFile ?? PostDetails.SummaryMarkdownFile) : PostDetails.SummaryMarkdownFile)" />
 
-        @if (IsDetailedView)
+        @if (IsDetailedView!.Value)
         {
             <center>
                 <!-- Font Awesome -->

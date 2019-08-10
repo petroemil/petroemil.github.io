@@ -12,55 +12,71 @@ namespace BlazorSite.Markdown
         #region InlineFormatter internal class
         private abstract class InlineFormatter
         {
-            public Func<Inline, bool> CanFormat;
+            public Func<Inline, bool> CanFormat { get; }
+
+            public InlineFormatter(Func<Inline, bool> canFormat)
+            {
+                CanFormat = canFormat;
+            }
 
             public class SimpleInlineFormatter : InlineFormatter
             {
-                public Func<Inline, string> Format;
+                public Func<Inline, string> Format { get; }
+
+                public SimpleInlineFormatter(Func<Inline, bool> canFormat, Func<Inline, string> format) : base(canFormat)
+                {
+                    Format = format;
+                }
             }
 
             public class OpenCloseInlineFormatter : InlineFormatter
             {
-                public Func<Inline, string> FormatOpening;
-                public Func<Inline, string> FormatClosing;
+                public Func<Inline, string> FormatOpening { get; }
+                public Func<Inline, string> FormatClosing { get; }
+
+                public OpenCloseInlineFormatter(Func<Inline, bool> canFormat, Func<Inline, string> formatOpening, Func<Inline, string> formatClosing) : base(canFormat)
+                {
+                    FormatOpening = formatOpening;
+                    FormatClosing = formatClosing;
+                }
             }
 
             public static SimpleInlineFormatter Create(Func<Inline, string> formatter)
             {
                 return new SimpleInlineFormatter
-                {
-                    CanFormat = _ => true,
-                    Format = formatter
-                };
+                (
+                    canFormat: _ => true,
+                    format: formatter
+                );
             }
 
             public static SimpleInlineFormatter Create(Func<Inline, bool> canFormat, Func<Inline, string> formatter)
             {
                 return new SimpleInlineFormatter
-                {
-                    CanFormat = canFormat,
-                    Format = formatter
-                };
+                (
+                    canFormat: canFormat,
+                    format: formatter
+                );
             }
 
             public static OpenCloseInlineFormatter Create(Func<Inline, string> openingFormatter, Func<Inline, string> closingFormatter)
             {
                 return new OpenCloseInlineFormatter
-                {
-                    CanFormat = _ => true,
-                    FormatOpening = openingFormatter,
-                    FormatClosing = closingFormatter
-                };
+                (
+                    canFormat: _ => true,
+                    formatOpening: openingFormatter,
+                    formatClosing: closingFormatter
+                );
             }
 
             public static OpenCloseInlineFormatter Create(Func<Inline, bool> canFormat, Func<Inline, string> openingFormatter, Func<Inline, string> closingFormatter)
             {
                 return new OpenCloseInlineFormatter
-                {
-                    CanFormat = canFormat,
-                    FormatOpening = openingFormatter,
-                    FormatClosing = closingFormatter
-                };
+                (
+                    canFormat: canFormat,
+                    formatOpening: openingFormatter,
+                    formatClosing: closingFormatter
+                );
             }
         } 
         #endregion
@@ -68,55 +84,71 @@ namespace BlazorSite.Markdown
         #region BlockFormatter internal class
         public abstract class BlockFormatter
         {
-            public Func<Block, bool> CanFormat;
+            public Func<Block, bool> CanFormat { get; }
+
+            public BlockFormatter(Func<Block, bool> canFormat)
+            {
+                CanFormat = canFormat;
+            }
 
             public class SimpleBlockFormatter : BlockFormatter
             {
-                public Func<Block, string> Format;
+                public Func<Block, string> Format { get; }
+
+                public SimpleBlockFormatter(Func<Block, bool> canFormat, Func<Block, string> format) : base(canFormat)
+                {
+                    Format = format;
+                }
             }
 
             public class OpenCloseBlockFormatter : BlockFormatter
             {
-                public Func<Block, string> FormatOpening;
-                public Func<Block, string> FormatClosing;
+                public Func<Block, string> FormatOpening { get; }
+                public Func<Block, string> FormatClosing { get; }
+
+                public OpenCloseBlockFormatter(Func<Block, bool> canFormat, Func<Block, string> formatOpening, Func<Block, string> formatClosing) : base(canFormat)
+                {
+                    FormatOpening = formatOpening;
+                    FormatClosing = formatClosing;
+                }
             }
 
             public static SimpleBlockFormatter Create(Func<Block, string> formatter)
             {
                 return new SimpleBlockFormatter
-                {
-                    CanFormat = _ => true,
-                    Format = formatter
-                };
+                (
+                    canFormat: _ => true,
+                    format: formatter
+                );
             }
 
             public static SimpleBlockFormatter Create(Func<Block, bool> canFormat, Func<Block, string> formatter)
             {
                 return new SimpleBlockFormatter
-                {
-                    CanFormat = canFormat,
-                    Format = formatter
-                };
+                (
+                    canFormat: canFormat,
+                    format: formatter
+                );
             }
 
             public static OpenCloseBlockFormatter Create(Func<Block, string> openingFormatter, Func<Block, string> closingFormatter)
             {
                 return new OpenCloseBlockFormatter
-                {
-                    CanFormat = _ => true,
-                    FormatOpening = openingFormatter,
-                    FormatClosing = closingFormatter
-                };
+                (
+                    canFormat: _ => true,
+                    formatOpening: openingFormatter,
+                    formatClosing: closingFormatter
+                );
             }
 
             public static OpenCloseBlockFormatter Create(Func<Block, bool> canFormat, Func<Block, string> openingFormatter, Func<Block, string> closingFormatter)
             {
                 return new OpenCloseBlockFormatter
-                {
-                    CanFormat = canFormat,
-                    FormatOpening = openingFormatter,
-                    FormatClosing = closingFormatter
-                };
+                (
+                    canFormat: canFormat,
+                    formatOpening: openingFormatter,
+                    formatClosing: closingFormatter
+                );
             }
         } 
         #endregion
