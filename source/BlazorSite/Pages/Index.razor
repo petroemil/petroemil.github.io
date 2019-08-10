@@ -3,13 +3,13 @@
 
 <h1 style="text-align: center">Emil's Dev Blog</h1>
 
-@if (BlogPosts is null)
+@if (ViewModel is null)
 {
     <p><center>Retrieving posts from GitHub...</center></p>
 }
 else
 {
-    foreach (var post in BlogPosts)
+    foreach (var post in ViewModel.BlogPosts)
     {
         <PostCard PostDetails="@post" IsDetailedView="false" />
     }

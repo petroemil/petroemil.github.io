@@ -1,6 +1,5 @@
-﻿using BlazorSite.BlogService;
+﻿using BlazorSite.ViewModels;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BlazorSite.Pages
@@ -8,13 +7,12 @@ namespace BlazorSite.Pages
     public class IndexBase : ComponentBase
     {
         [Inject]
-        private IBlogService? BlogService { get; set; }
-
-        protected IEnumerable<BlogPostDetails>? BlogPosts { get; set; }
+        private IIndexViewModelProvider? ViewModelProvider { get; set; }
+        protected IndexViewModel? ViewModel { get; private set; }
 
         protected override async Task OnInitAsync()
         {
-            BlogPosts = await BlogService!.GetBlogPosts();
+            ViewModel = await ViewModelProvider!.GetViewModel();
         }
     }
 }

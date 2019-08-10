@@ -3,4 +3,11 @@
 
 <a href="/"><h1 style="text-align: center">Emil's Dev Blog</h1></a>
 
-<PostCard PostDetails="@PostDetails" IsDetailedView="true" />
+@if (ViewModel is null)
+{
+    <p><center>Retrieving post details from GitHub...</center></p>
+}
+else
+{
+    <PostCard PostDetails="@ViewModel.PostDetails" IsDetailedView="true" />
+}

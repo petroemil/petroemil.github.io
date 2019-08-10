@@ -1,25 +1,21 @@
 ﻿using System.Threading.Tasks;
-using BlazorSite.BlogService;
+using BlazorSite.ViewModels;
 using Microsoft.AspNetCore.Components;
 
 namespace BlazorSite.Pages
 {
     public class PostBase : ComponentBase
     {
-        [Inject]
-        private IBlogService? BlogService { get; set; }
-
         [Parameter]
         private string? PostId { get; set; }
 
-        protected BlogPostDetails? PostDetails { get; set; }
+        [Inject]
+        private IPostViewModelProvider? ViewModelProvider { get; set; }
+        protected PostViewModel? ViewModel { get; private set; }
 
         protected override async Task OnInitAsync()
         {
-            if (PostId is null)
-                return;
-
-            PostDetails = await BlogService!.GetBlogPostDetails(PostId);
+            ViewModel = await ViewModelProvider!.GetViewModel(PostId!);
         }
     }
 }
