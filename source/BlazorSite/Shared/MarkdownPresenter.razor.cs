@@ -23,7 +23,7 @@ namespace BlazorSite.Shared
 
         protected string? FormattedMarkdown { get; set; }
 
-        protected override async Task OnParametersSetAsync()
+        protected override async Task OnInitAsync()
         {
             if (PostId is null || FileName is null)
                 return;
@@ -32,8 +32,6 @@ namespace BlazorSite.Shared
             var markdown = await HttpClient!.GetStringAsync(markdownFilePath);
 
             FormattedMarkdown = MarkdownConverter!.ConvertMarkdownToHTML(PostId, markdown);
-
-            this.StateHasChanged();
         }
 
         public void Dispose()

@@ -14,14 +14,12 @@ namespace BlazorSite.Pages
 
         protected BlogPostDetails? PostDetails { get; set; }
 
-        protected override async Task OnParametersSetAsync()
+        protected override async Task OnInitAsync()
         {
             if (PostId is null)
                 return;
 
             PostDetails = await BlogService!.GetBlogPostDetails(PostId);
-
-            this.StateHasChanged();
         }
     }
 }
