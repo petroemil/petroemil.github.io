@@ -1,17 +1,10 @@
-﻿using BlazorSite.BlogService;
-using BlazorSite.Markdown;
+﻿using BlazorSite.Markdown;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace BlazorSite.Shared
 {
-    public class MarkdownPresenterBase : ComponentBase, IDisposable
+    public class MarkdownPresenterBase : ComponentBase
     {
-        [Inject]
-        private HttpClient? HttpClient { get; set; }
-
         [Inject]
         private IMarkdownConverter? MarkdownConverter { get; set; }
 
@@ -19,24 +12,13 @@ namespace BlazorSite.Shared
         private string? PostId { get; set; }
 
         [Parameter]
-        private string? FileName { get; set; }
+        private string? Markdown { get; set; }
 
         protected string? FormattedMarkdown { get; set; }
 
-        protected override async Task OnInitAsync()
+        protected override void OnInit()
         {
-            if (PostId is null || FileName is null)
-                return;
-
-            var markdownFilePath = BlogPostUriHelper.GetContentFileUri(PostId, FileName);
-            var markdown = await HttpClient!.GetStringAsync(markdownFilePath);
-
-            FormattedMarkdown = MarkdownConverter!.ConvertMarkdownToHTML(PostId, markdown);
-        }
-
-        public void Dispose()
-        {
-            FormattedMarkdown = null;
+            FormattedMarkdown = MarkdownConverter!.ConvertMarkdownToHTML(PostId!, Markdown!);
         }
     }
 }

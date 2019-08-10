@@ -1,12 +1,5 @@
 ﻿@inherits MarkdownPresenterBase
 
-@if (FormattedMarkdown is null)
-{
-    <p><center>Parsing Markdown...</center></p>
-}
-else
-{
-    <div class="markdown">
-        @((MarkupString)FormattedMarkdown)
-    </div>
-}
+<div class="markdown">
+    @((MarkupString)FormattedMarkdown)
+</div>

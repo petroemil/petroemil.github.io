@@ -13,8 +13,9 @@ namespace BlazorSite.BlogService
         public string SummaryMarkdownFile {get; }
         public string? MarkdownFile { get; }
         public string SocialSharingFile { get; }
+        public string Markdown { get; }
 
-        public BlogPostDetails(string postId, BlogPostMetadata metadata)
+        public BlogPostDetails(string postId, BlogPostMetadata metadata, string markdown)
         {
             PostId = postId;
 
@@ -25,6 +26,8 @@ namespace BlazorSite.BlogService
             SummaryMarkdownFile = metadata.SummaryMarkdownFile;
             MarkdownFile = metadata.MarkdownFile;
             SocialSharingFile = metadata.SocialSharingFile;
+
+            Markdown = markdown;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace BlazorSite.ViewModels
 
         public async Task<PostViewModel> GetViewModel(string postId)
         {
-            var postDetails = await this.blogService.GetBlogPostDetails(postId);
+            var postDetails = await this.blogService.GetBlogPostDetails(postId, true);
             return new PostViewModel(postDetails);
         }
     }

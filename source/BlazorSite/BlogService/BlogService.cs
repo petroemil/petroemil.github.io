@@ -11,7 +11,7 @@ namespace BlazorSite.BlogService
     public interface IBlogService
     {
         Task<IEnumerable<BlogPostDetails>> GetBlogPosts(bool includeDrafts = false);
-        Task<BlogPostDetails> GetBlogPostDetails(string postId);
+        Task<BlogPostDetails> GetBlogPostDetails(string postId, bool detailed);
     }
 
     public class BlogService : IBlogService
@@ -23,11 +23,16 @@ namespace BlazorSite.BlogService
             this.httpClient = httpClient;
         }
 
-        public async Task<BlogPostDetails> GetBlogPostDetails(string postId)
+        public async Task<BlogPostDetails> GetBlogPostDetails(string postId, bool detailed)
         {
-            var metadataFilePath = BlogPostUriHelper.GetMetadataFileUri(postId);
-            var metadata = await httpClient.GetJsonAsync<BlogPostMetadata>(metadataFilePath);
-            return new BlogPostDetails(postId, metadata);
+            var metadataUri = BlogPostUriHelper.GetMetadataFileUri(postId);
+            var metadata = await httpClient.GetJsonAsync<BlogPostMetadata>(metadataUri);
+
+            var markdownFile = detailed ? metadata.MarkdownFile ?? metadata.SummaryMarkdownFile : metadata.SummaryMarkdownFile;
+            var markdownUri = BlogPostUriHelper.GetContentFileUri(postId, markdownFile);
+            var markdown = await httpClient.GetStringAsync(markdownUri);
+
+            return new BlogPostDetails(postId, metadata, markdown);
         }
 
         private async Task<IEnumerable<string>> GetPostIds()
@@ -50,10 +55,10 @@ namespace BlazorSite.BlogService
         {
             var posts = await Observable
                 .FromAsync(() => GetPostIds())
-                .SelectMany(x => x)
-                .Select(x => Observable.FromAsync(() => GetBlogPostDetails(x)))
+                .SelectMany(ids => ids)
+                .Select(id => Observable.FromAsync(() => GetBlogPostDetails(id, false)))
                 .Merge(10)
-                .Where(x => !x.IsDraft || includeDrafts)
+                .Where(post => !post.IsDraft || includeDrafts)
                 .ToList();
 
             return posts.OrderByDescending(x => x.PublishDate);

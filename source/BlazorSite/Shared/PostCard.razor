@@ -21,8 +21,7 @@
             </div>
         </ConditionalLink>
 
-        <MarkdownPresenter PostId="@PostDetails.PostId"
-                           FileName="@(IsDetailedView!.Value ? (PostDetails.MarkdownFile ?? PostDetails.SummaryMarkdownFile) : PostDetails.SummaryMarkdownFile)" />
+        <MarkdownPresenter PostId="@PostDetails.PostId" Markdown="@(PostDetails.Markdown)" />
 
         @if (IsDetailedView!.Value)
         {
