@@ -4,6 +4,11 @@ on:
   push:
     paths:
       - 'source/*'
+      - 'source/*/*'
+      - 'source/*/*/*'
+      - 'source/*/*/*/*'
+      - 'source/*/*/*/*/*'
+      - 'source/*/*/*/*/*/*'
 
 jobs:
   build:
