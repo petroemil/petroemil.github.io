@@ -1,0 +1,23 @@
+name: ASP.NET Core CD
+
+on:
+  push:
+     tags:
+        - publish
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100-preview7-012821
+    - name: Setup ASP.NET Core
+      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.100-preview7-012821
+    - name: Build
+      run: dotnet build --configuration Release --force source/BlazorSite.sln
