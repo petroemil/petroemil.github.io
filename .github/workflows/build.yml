@@ -27,5 +27,5 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
     - name: Publish
-      run: publish
+      run: .\publish.ps1
       shell: pwsh
