@@ -27,5 +27,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
     - name: Publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: .\publish.ps1
       shell: pwsh
