@@ -29,6 +29,6 @@ jobs:
     - name: Publish
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}
       run: .\publish.ps1
       shell: pwsh
