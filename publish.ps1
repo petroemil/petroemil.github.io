@@ -16,4 +16,4 @@ Get-ChildItem $publishPath -Exclude $ignored_published | Copy-Item -Destination 
 # Publish release
 git add .
 git commit -m "[Publish]"
-git push
+# git push
