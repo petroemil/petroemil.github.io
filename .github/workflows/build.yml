@@ -26,3 +26,6 @@ jobs:
       run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.100-preview7-012821
     - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
+    - name: Publish
+      run: publish
+      shell: pwsh
