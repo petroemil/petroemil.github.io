@@ -25,4 +25,4 @@ git config --global user.email "action@github.com"
 # Publish release
 git add .
 git commit -m "[Publish]"
-git push origin master
+git push origin HEAD:master
