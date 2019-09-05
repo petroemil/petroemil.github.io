@@ -13,8 +13,8 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.100-preview8-013656
+        dotnet-version: 3.0.0-preview7.19365.7
     - name: Setup ASP.NET Core
-      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.100-preview8-013656
+      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview7.19365.7
     - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
