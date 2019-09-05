@@ -7,7 +7,7 @@ dotnet publish .\source -c Release
 $rootPath = ".\"
 $publishPath = ".\source\BlazorSite\bin\Release\netstandard2.0\publish\BlazorSite\dist"
 
-$ignored_root = @(".git", "source", "content", ".gitattributes", ".gitignore", ".nojekyll", "README.md", "publish.ps1")
+$ignored_root = @(".git", ".github", "source", "content", ".gitattributes", ".gitignore", ".nojekyll", "README.md", "publish.ps1")
 $ignored_published = @("content")
 
 Get-ChildItem -Exclude $ignored_root | Remove-Item -Recurse
