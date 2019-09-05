@@ -1,6 +1,5 @@
 Param(
-    [string]$GITHUB_TOKEN,
-    [string]$GITHUB_REPOSITORY
+    [string]$GITHUB_TOKEN
 )
 
 $ErrorActionPreference = 'Stop'
@@ -19,7 +18,7 @@ Get-ChildItem -Exclude $ignored_root | Remove-Item -Recurse
 Get-ChildItem $publishPath -Exclude $ignored_published | Copy-Item -Destination $rootPath -Recurse
 
 # Git setup
-git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${env:GITHUB_REPOSITORY}.git
 git config --global user.name "GitHub Action"
 git config --global user.email "action@github.com"
 
