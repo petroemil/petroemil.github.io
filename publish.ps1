@@ -18,12 +18,14 @@ Get-ChildItem -Exclude $ignored_root | Remove-Item -Recurse
 Get-ChildItem $publishPath -Exclude $ignored_published | Copy-Item -Destination $rootPath -Recurse
 
 # Git setup
-git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${env:GITHUB_REPOSITORY}.git
+$GitHubToken = $GITHUB_TOKEN
+$GitHubRepo = $env:GITHUB_REPOSITORY
+
+git remote set-url origin https://x-access-token:${GitHubToken}@github.com/${GitHubRepo}.git
 git config --global user.name "GitHub Action"
 git config --global user.email "action@github.com"
 
 # Publish release
 git add .
-git status
 git commit -m "[Publish]"
 git push origin HEAD
