@@ -1,3 +1,7 @@
+Param(
+    [string]$GITHUB_TOKEN
+)
+
 $ErrorActionPreference = 'Stop'
 
 # Create the release
@@ -12,6 +16,11 @@ $ignored_published = @("content")
 
 Get-ChildItem -Exclude $ignored_root | Remove-Item -Recurse
 Get-ChildItem $publishPath -Exclude $ignored_published | Copy-Item -Destination $rootPath -Recurse
+
+# Git setup
+git remote set-url origin https://x-access-token:$GITHUB_TOKEN@github.com/petroemil.github.io.git
+git config --global user.name "GitHub Action"
+git config --global user.email "action@github.com"
 
 # Publish release
 git add .
