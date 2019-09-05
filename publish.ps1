@@ -26,4 +26,4 @@ git config --global user.email "action@github.com"
 git add .
 git status
 git commit -m "[Publish]"
-# git push
+git push
