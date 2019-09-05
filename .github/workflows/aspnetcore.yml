@@ -8,11 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v1
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.0.100-preview8-013656
-      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.100-preview8-013656
-    - name: Build with dotnet
+    - name: Setup ASP.NET Core
+      run: run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.100-preview8-013656
+    - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
