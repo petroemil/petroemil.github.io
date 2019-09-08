@@ -7,10 +7,10 @@ namespace BlazorSite.Shared
     public class PostCardBase : ComponentBase
     {
         [Parameter]
-        protected BlogPostDetails? PostDetails { get; set; }
+        public BlogPostDetails? PostDetails { get; set; }
 
         [Parameter]
-        protected bool? IsDetailedView { get; set; }
+        public bool? IsDetailedView { get; set; }
 
         protected string GetTwitterShareUrl()
         {

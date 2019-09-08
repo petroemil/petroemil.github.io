@@ -7,13 +7,13 @@ namespace BlazorSite.Pages
     public class PostBase : ComponentBase
     {
         [Parameter]
-        private string? PostId { get; set; }
+        public string? PostId { get; set; }
 
         [Inject]
         private IPostViewModelProvider? ViewModelProvider { get; set; }
         protected PostViewModel? ViewModel { get; private set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             ViewModel = await ViewModelProvider!.GetViewModel(PostId!);
         }

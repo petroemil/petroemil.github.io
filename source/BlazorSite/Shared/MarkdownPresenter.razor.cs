@@ -9,14 +9,14 @@ namespace BlazorSite.Shared
         private IMarkdownConverter? MarkdownConverter { get; set; }
 
         [Parameter]
-        private string? PostId { get; set; }
+        public string? PostId { get; set; }
 
         [Parameter]
-        private string? Markdown { get; set; }
+        public string? Markdown { get; set; }
 
         protected string? FormattedMarkdown { get; set; }
 
-        protected override void OnInit()
+        protected override void OnInitialized()
         {
             FormattedMarkdown = MarkdownConverter!.ConvertMarkdownToHTML(PostId!, Markdown!);
         }

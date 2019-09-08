@@ -10,7 +10,7 @@ namespace BlazorSite.Pages
         private IIndexViewModelProvider? ViewModelProvider { get; set; }
         protected IndexViewModel? ViewModel { get; private set; }
 
-        protected override async Task OnInitAsync()
+        protected override async Task OnInitializedAsync()
         {
             ViewModel = await ViewModelProvider!.GetViewModel();
         }
