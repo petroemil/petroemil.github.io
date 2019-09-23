@@ -21,9 +21,9 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 3.0.100-rc1-014190
+        dotnet-version: 3.0.100
     - name: Setup ASP.NET Core
-      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19457.4
+      run: dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2
     - name: Build
       run: dotnet build --configuration Release --force source/BlazorSite.sln
     - name: Publish
