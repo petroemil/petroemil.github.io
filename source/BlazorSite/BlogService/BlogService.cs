@@ -42,7 +42,7 @@ namespace BlazorSite.BlogService
 #else
             var hitHubContentUrl = BlogPostUriHelper.GetGitHubContentUrl();
             var postIds = await Observable
-                .FromAsync(() => httpClient.GetJsonAsync<GitHubContent[]>(hitHubContentUrl))
+                .FromAsync(() => httpClient.GetFromJsonAsync<GitHubContent[]>(hitHubContentUrl))
                 .SelectMany(x => x)
                 .Select(x => x.Name)
                 .ToList();
