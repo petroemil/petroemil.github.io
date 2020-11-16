@@ -9,7 +9,7 @@ dotnet publish .\source -c Release
 
 # Copying the published content to the root (on GitHub Pages, that's publishing)
 $rootPath = ".\"
-$publishPath = ".\source\BlazorSite\bin\Release\net5.0\publish\BlazorSite\dist"
+$publishPath = ".\source\BlazorSite\bin\Release\net5.0\browser-wasm\publish\wwwroot"
 
 $ignored_root = @(".git", ".github", "source", "content", ".gitattributes", ".gitignore", ".nojekyll", "README.md", "publish.ps1")
 $ignored_published = @("content")
