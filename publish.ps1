@@ -21,6 +21,7 @@ Get-ChildItem $publishPath -Exclude $ignored_published | Copy-Item -Destination 
 git remote set-url origin https://x-access-token:${env:GITHUB_TOKEN}@github.com/${env:GITHUB_REPOSITORY}.git
 git config --global user.name "GitHub Action"
 git config --global user.email "action@github.com"
+git config --global core.autocrlf false
 
 # Publish release
 git add .
