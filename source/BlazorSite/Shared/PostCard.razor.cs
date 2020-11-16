@@ -1,11 +1,15 @@
 ﻿using BlazorSite.BlogService;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 
 namespace BlazorSite.Shared
 {
     public class PostCardBase : ComponentBase
     {
+        [Inject]
+        public IJSRuntime JSInterop { get; set; }
+
         [Parameter]
         public BlogPostDetails? PostDetails { get; set; }
 
@@ -28,12 +32,14 @@ namespace BlazorSite.Shared
             return $"https://www.facebook.com/sharer/sharer.php?text={title}&u={url}";
         }
 
-        //protected string GetLinkedInShareUrl()
-        //{
-        //    var url = Uri.EscapeDataString(BlogPostUriHelper.GetSocialShareUrl(PostDetails.PostId, "socialshare.html"));
-
-        //    return $"http://www.linkedin.com/shareArticle?mini=true&url={url}";            
-        //}
+        protected void OnShareButtonClick()
+        {
+            this.JSInterop.InvokeVoidAsync("navigator.share", new
+            {
+                title = this.PostDetails!.Title,
+                url = this.GetSocialShareUrl()
+            });
+        }
 
         protected string GetSocialShareUrl()
             => BlogPostUriHelper.GetSocialShareUrl(PostDetails!.PostId, PostDetails.SocialSharingFile);
