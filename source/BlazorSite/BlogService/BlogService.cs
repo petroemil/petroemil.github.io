@@ -1,8 +1,8 @@
 ﻿using BlazorSite.BlogService.Dto;
-using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +26,7 @@ namespace BlazorSite.BlogService
         public async Task<BlogPostDetails> GetBlogPostDetails(string postId, bool detailed)
         {
             var metadataUri = BlogPostUriHelper.GetMetadataFileUri(postId);
-            var metadata = await httpClient.GetJsonAsync<BlogPostMetadata>(metadataUri);
+            var metadata = await httpClient.GetFromJsonAsync<BlogPostMetadata>(metadataUri);
 
             var markdownFile = detailed ? metadata.MarkdownFile ?? metadata.SummaryMarkdownFile : metadata.SummaryMarkdownFile;
             var markdownUri = BlogPostUriHelper.GetContentFileUri(postId, markdownFile);
